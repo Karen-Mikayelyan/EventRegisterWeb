@@ -5,6 +5,7 @@ import model.Event;
 import model.User;
 
 import java.sql.*;
+import java.text.ParseException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class UserManager {
         }
     }
 
-    public List<User> getAll() throws SQLException {
+    public List<User> getAll() throws SQLException, ParseException {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM user");
         List<User> users = new LinkedList<>();
@@ -44,7 +45,7 @@ public class UserManager {
         return users;
     }
 
-    public User getById(int id) throws SQLException {
+    public User getById(int id) throws SQLException, ParseException {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM user WHERE id = " + id);
         List<User> users = new LinkedList<>();
@@ -54,7 +55,7 @@ public class UserManager {
         return null;
     }
 
-    private User getUserFromResultSet(ResultSet resultSet) throws SQLException {
+    private User getUserFromResultSet(ResultSet resultSet) throws SQLException, ParseException {
         User user = new User();
         user.setId(resultSet.getInt(1));
         user.setName(resultSet.getString("name"));

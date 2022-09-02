@@ -2,7 +2,7 @@ package model;
 
 public enum EventType {
 
-    CHESS_TOURNAMENT,
+    CHESS,
     CONCERT,
     PERFORMANCE
 }

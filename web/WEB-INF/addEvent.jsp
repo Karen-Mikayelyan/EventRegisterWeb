@@ -23,6 +23,8 @@ Please input event's data
     <br>
     <input type="number" name="price" placeholder="Please input price">
     <br>
+    Please input event's data
+    <input type="date" name="eventDate"> <br>
     Event Type
     <select name="eventType">
         <option value="CHESS_TOURNAMENT">CHESS_TOURNAMENT</option>

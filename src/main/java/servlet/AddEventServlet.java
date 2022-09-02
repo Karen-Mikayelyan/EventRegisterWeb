@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 @WebServlet(urlPatterns = "/events/add")
 public class AddEventServlet extends HttpServlet {
 
     private EventManager eventManager = new EventManager();
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,6 +32,7 @@ public class AddEventServlet extends HttpServlet {
         boolean isOnline = Boolean.valueOf(req.getParameter("isOnline"));
         double price = Double.parseDouble(req.getParameter("price"));
         EventType eventType = EventType.valueOf(req.getParameter("eventType"));
+        String eventDateStr = req.getParameter("eventDate");
 
         Event event = Event.builder()
                 .name(name)
@@ -37,10 +40,10 @@ public class AddEventServlet extends HttpServlet {
                 .isOnline(isOnline)
                 .price(price)
                 .eventType(eventType)
+                .eventDate(sdf.parse(eventDateStr))
                 .build();
 
 
         eventManager.add(event);
-resp.sendRedirect("/events");
     }
 }

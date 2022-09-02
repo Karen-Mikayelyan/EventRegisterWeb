@@ -14,7 +14,7 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/events")
 public class EventsServlet extends HttpServlet {
-
+//brauzery baci chka im mot taki panely vor es bacem
     private EventManager eventManager = new EventManager();
 
 
